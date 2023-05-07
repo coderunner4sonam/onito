@@ -3,30 +3,32 @@ import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 
 const usersRef = firestore.collection("users");
+const initialFormData={
+  name: "",
+  age: "",
+  sex: "",
+  mobile: "",
+  emergencyContact: "",
+  address: "",
+  state: "",
+  city: "",
+  pincode: "",
+  country: "",
+  occupation: "",
+  religion: "",
+  maritalStatus: "",
+  bloodGroup: "",
+  nationality: "",
+  govtIdType: "",
+  govtId: "",
+  email: "",
+  guardianName: "",
+  guardiandetails: "",
+}
 
 function Form() {
-  const [formData, setFormData] = useState({
-    name: "",
-    age: "",
-    sex: "",
-    mobile: "",
-    emergencyContact: "",
-    address: "",
-    state: "",
-    city: "",
-    pincode: "",
-    country: "",
-    occupation: "",
-    religion: "",
-    maritalStatus: "",
-    bloodGroup: "",
-    nationality: "",
-    govtIdType: "",
-    govtId: "",
-    email: "",
-    guardianName: "",
-    guardiandetails: "",
-  });
+  const [formData, setFormData] = useState(initialFormData);
+
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});
 
@@ -396,7 +398,7 @@ function Form() {
         </div>
       </div>
       <div className="btn">
-        <button type="cancel">
+        <button onClick={()=>setFormData(initialFormData)}>
           Cancel
           <br />
           <span>(FSC)</span>
